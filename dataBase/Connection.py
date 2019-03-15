@@ -35,7 +35,7 @@ class mysql_operator(object):
             print(e)
             self.connection.rollback()
 
-    def select(self, sql, *args):
+    def select_for_args(self, sql, *args):
         '''
 
         :param sql:
@@ -47,24 +47,21 @@ class mysql_operator(object):
         print('数据的行署', self.cursor.rowcount)
         rs = self.cursor.fetchall();
         for one in rs:
-            if len(args) == 2:
-                result_list.append((one[args[0]], one[args[1]]))
-            else:
-                result_list.append((one[args[0]]))
+            for params in args:
+                result_list.append((one[params]))
         return result_list
 
 
-    def select_stock_info(self, sql):
+    def select(self, sql):
         '''
-
+        搜索所有的字段
         :param sql:
-        :param args:
         :return: 以Maxies的形式返回查询的数据-
         '''
         result_list = []
         self.cursor.execute(sql)
         print('数据的行署', self.cursor.rowcount)
-        rs = self.cursor.fetchall();
+        rs = self.cursor.fetchall()
         for one in rs:
             result_list.append(one)
         return result_list
