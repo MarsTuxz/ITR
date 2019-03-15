@@ -52,6 +52,22 @@ class mysql_operator(object):
         return result_list
 
 
+
+    def select_body_like(self, words):
+        '''
+        :param words: 模糊查询的文字
+        :return:
+        '''
+        # select * from poems where poem_body like '%夜%'
+        sql = 'select * from poems where poem_body like "%'+words+'%"'
+        result_list = []
+        self.cursor.execute(sql)
+        print('数据的行署', self.cursor.rowcount)
+        rs = self.cursor.fetchall()
+        for one in rs:
+            result_list.append(one)
+        return result_list
+
     def select(self, sql):
         '''
         搜索所有的字段
