@@ -194,5 +194,7 @@ if __name__ == '__main__':
     sql = sql()
 
     spider = Spider(BrowserBase())
-    spider.get_link('https://so.gushiwen.org/gushi/tangshi.aspx', '唐诗三百')
+    with open('pemos_demos_txt', 'r') as f:
+        f.readline()
+        spider.get_link('https://so.gushiwen.org/gushi/tangshi.aspx', '唐诗三百')
     sql.close()
