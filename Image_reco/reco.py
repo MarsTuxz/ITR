@@ -1,5 +1,4 @@
 from PIL import Image
-import time
 import pytesseract
 class Image_rec(object):
     def feedbackWord(self,address):
