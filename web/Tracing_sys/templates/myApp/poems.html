@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>诗词溯源</title>
+</head>
+<body>
+    <!--<h1>上传图片</h1>-->
+        <!--<form action="/msggate/" method="post">-->
+        <!--{% csrf_token %}-->
+        <!--<input type="text" name="userA" /> 选择图片-->
+        <!--<input type="submit" value="上传图片"/>-->
+        <!--</form>-->
+    <h1>诗词列表</h1>
+    <ul>
+        {% for poem in poems %}
+        <li>
+            {{poem.title}}--{{poem.author}}--{{poem.poem_body}}--{{poem.dynasty}}--
+            {{poems.tac}}--{{poems.appreciation}}--{{poems.background}}--{{poems.self_intro}}
+        </li>
+        {%endfor%}
+    </ul>
+</body>
+</html>
