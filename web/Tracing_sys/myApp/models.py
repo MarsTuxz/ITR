@@ -10,5 +10,8 @@ class poems(models.Model):
     appreciation = models.CharField(max_length=1000)
     background = models.CharField(max_length=1000)
     self_intro = models.CharField(max_length=1000)
+    # 添加图片的上传
+   # img_url = models.ImageField(upload_to='img')  # upload_to指定图片上传的途径，如果不存在则自动创
     def __str__(self):
         return self.title
+

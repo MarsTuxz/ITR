@@ -3,22 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <title>诗词溯源</title>
+    <style>
+        #background {
+            background-repeat: no-repeat;
+            background-size:100% 100%;
+            width: 100%;
+            height: 692px;
+        }
+        #upload{
+            text-align: center;
+            position: relative;
+            top: 332px;
+        }
+#btn_upload{
+    font-size: 23px;
+    width: 124px;
+    height: 77px;
+    border: none;
+    outline: none;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 0;
+    opacity: 0.5;
+        border: 2px solid #00000026;
+}
+#pic{
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    width: 451px;
+    outline: none;
+    height: 71px;
+    border: none;
+    opacity: 0.6;
+    position: relative;
+    top: -5px;
+    font-size=23px;
+    border: 2px solid #00000026;
+    border-right: none;
+    outline: none;
+    left: 5px;
+
+}
+
+#photo{
+
+
+    position: absolute;
+    left: 868px;
+    top: 11px;
+    opacity: 0.6;
+    width: 55px;
+    height: 55px;
+}
+
+
+    </style>
 </head>
-<body>
-    <!--<h1>上传图片</h1>-->
-        <!--<form action="/msggate/" method="post">-->
-        <!--{% csrf_token %}-->
-        <!--<input type="text" name="userA" /> 选择图片-->
-        <!--<input type="submit" value="上传图片"/>-->
-        <!--</form>-->
-    <h1>诗词列表</h1>
-    <ul>
-        {% for poem in poems %}
-        <li>
-            {{poem.title}}--{{poem.author}}--{{poem.poem_body}}--{{poem.dynasty}}--
-            {{poems.tac}}--{{poems.appreciation}}--{{poems.background}}--{{poems.self_intro}}
-        </li>
-        {%endfor%}
-    </ul>
+<body id="background" background="">
+<div id="upload">
+    <form action="search/" method="post" enctype="multipart/form-data">
+        <input id="pic" type="file" name="picture" value="选择" />
+        <!--<img src="..." id="photo" title="photo"/>-->
+        <input id="btn_upload" type="submit" value="上传" onmouseover="this.style.backgroundColor='#c7b9b9';"
+           onmouseout="this.style.backgroundColor='';"/>
+    </form>
+</div>
 </body>
 </html>
