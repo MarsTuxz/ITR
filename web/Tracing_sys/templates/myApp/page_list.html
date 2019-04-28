@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>展示结果</title>
+    <style>
+        #background {
+            width: 100%;
+            height: 572px;
+        }
+
+        #choose, #upload {
+            width: 100px;
+            height: 50px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            font-size: 20px;
+
+        }
+
+        #result {
+            width: 100%;
+            height: 573px;
+            position: absolute;
+            top: 0;
+        }
+
+        .small_label {
+            width: 20px;
+            height: 10px;
+            position: relative;
+            left: 37px;
+        }
+
+        .small_input {
+            width: 265px;
+    height: 31px;
+    position: relative;
+    left: 44px;
+    text-align: center;
+    font-size: 18px;
+    font-family: 华文仿宋;
+        }
+
+
+        .small_button {
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            width: 117px;
+            height: 39px;
+        }
+
+        #learn_more {
+            position: absolute;
+            top: 8px;
+            right: 18px;
+font-size: 18px;
+    font-family: 华文仿宋;
+        }
+
+        .lines {
+            width: 589px;
+            height: 333px;
+            opacity: 0.5;
+
+        }
+
+        .poem_body {
+            width: 20px;
+            height: 10px;
+            position: relative;
+            left: 37px;
+
+        }
+#poem_body{
+font-size: 28px;
+    font-family: 华文仿宋;
+}
+
+    </style>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+    </script>
+
+</head>
+{% load staticfiles %}
+<body style="margin: 0px;">
+
+<img id="background" src="{% static "background2.png" %}">
+
+{% for poem in poems%}
+
+<div id="result">
+    <p><label class="small_label">题目</label><input id="title" class="small_input" type="text" disabled="disabled"
+                                                   value="{{poem.title}}" ></p>
+    <p><label class="small_label">朝代</label><input id="dynasty" class="small_input" type="text" disabled="disabled"
+                                                   value="{{poem.dynasty}}" ></p>
+    <p><label class="small_label">作者</label><input id="author" class="small_input" type="text" disabled="disabled"
+                                                   value="{{poem.author}}">
+
+    </p>
+    <script>
+        $(function () {
+            $('#poem_background').click(function () {
+                $("#learn_more").val("{{poem.background}}");
+            })
+            $('#poem_appreciate').click(function () {
+                $("#learn_more").val("{{poem.appreciation}}");
+            })
+            $('#poem_tac').click(function () {
+                $("#learn_more").val("{{poem.tac}}");
+            })
+            $('#author_detail').click(function () {
+                $("#learn_more").val("{{poem.self_intro}}");
+            })
+        });
+
+    </script>
+    <textarea id="learn_more" class="lines" readonly>
+        {{poem.self_intro}}
+    </textarea>
+    <div class="poem_body" style="width:auto;height:auto;">
+        <p style="width: 50px;"><label class="big_label">正文</label></p> <textarea id="poem_body" class="lines" readonly>
+       {{poem.poem_body}}
+    </textarea>
+    </div>
+
+    <div id="buttons" style="    position: relative;
+    left: 820px;
+    top: -198px;
+    width: 489px;">
+        <input id="poem_background"
+               class="small_button" type="button"
+               value="诗歌背景"
+               onmouseover="this.style.backgroundColor='#c7b9b9';"
+               onmouseout="this.style.backgroundColor='';">
+        <input id="poem_appreciate" class="small_button" type="button" value="诗歌赏析"
+               onmouseover="this.style.backgroundColor='#c7b9b9';"
+               onmouseout="this.style.backgroundColor='';">
+        <input id="poem_tac" class="small_button" type="button" value="译文"
+               onmouseover="this.style.backgroundColor='#c7b9b9';"
+               onmouseout="this.style.backgroundColor='';">
+        <input id="author_detail" class="small_button" type="button" value="作者简介"
+               onmouseover="this.style.backgroundColor='#c7b9b9';"
+               onmouseout="this.style.backgroundColor='';">
+    </div>
+
+</div>
+{%endfor%}
+</body>
+</html>
